@@ -5,3 +5,34 @@ api-version: '${paperVersion}'
 libraries:
   - org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}
   - org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}
+  - io.github.monun:kommand-core:3.1.7
+  - io.github.monun:tap-core:4.9.8
+  - io.github.monun:invfx-core:3.3.2
+commands:
+  point:
+    description: Set a point to draw a curve
+  road:
+    description: Command for road session to place roads
+    permission: msilotroad.road
+    usage: "Usage: /<command> [build|settings|remove]"
+permissions:
+  msilotroad.*:
+    description: Master Permission
+    default: op
+  msilotroad.road.*:
+    description: Permission to perform all road operations
+    default: op
+    children:
+      msilotroad.road.build: true
+      msilotroad.road.settings: true
+      msilotroad.road.remove: true
+  msilotroad.road.build:
+    description: Permission to perform road building operations
+    default: op
+  msilotroad.road.settings:
+    description: Permission to configure road operation settings
+    default: op
+  msilotroad.road.remove:
+    description: Permission to perform road remove operations
+    default: op
+

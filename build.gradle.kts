@@ -21,9 +21,9 @@ dependencies {
     implementation(kotlin("reflect"))
     paperweight.paperDevBundle("${Dependency.Paper.Version}-R0.1-SNAPSHOT")
 
-//    implementation("io.github.monun:kommand-api:latest.release")
-//    implementation("io.github.monun:tap-api:latest.release")
-//    implementation("io.github.monun:invfx-api:latest.release")
+    // implementation("io.github.monun:kommand-api:latest.release")
+    implementation("io.github.monun:tap-api:latest.release")
+    implementation("io.github.monun:invfx-api:latest.release")
 //    implementation("io.github.monun:heartbeat-coroutines:latest.release")
 }
 
@@ -44,8 +44,7 @@ tasks {
     }
 
     fun registerJar(
-        classifier: String,
-        source: Any
+        classifier: String, source: Any
     ) = register<Copy>("test${classifier.capitalized()}Jar") {
         from(source)
 

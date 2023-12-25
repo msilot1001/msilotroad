@@ -1,1 +1,3 @@
-rootProject.name = "sample"
+val name = "msilotroad"
+
+rootProject.name = name;
