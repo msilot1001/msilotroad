@@ -35,4 +35,6 @@ permissions:
   msilotroad.road.remove:
     description: Permission to perform road remove operations
     default: op
+depend:
+  - ProtocolLib
 

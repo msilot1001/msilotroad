@@ -1,6 +1,6 @@
 #!/bin/bash
 
-classifier="dev"
+classifier="reobf"
 [[ $1 == "dev" ]] && classifier="dev"
 [[ $1 == "reobf" ]] && classifier="reobf"
 [[ $1 == "clip" ]] && classifier="clip"

@@ -14,6 +14,9 @@ java {
 
 repositories {
     mavenCentral()
+    maven {
+        url = uri("https://repo.dmulloy2.net/repository/public/")
+    }
 }
 
 dependencies {
@@ -25,6 +28,10 @@ dependencies {
     implementation("io.github.monun:tap-api:latest.release")
     implementation("io.github.monun:invfx-api:latest.release")
 //    implementation("io.github.monun:heartbeat-coroutines:latest.release")
+
+    compileOnly("com.comphenix.protocol:ProtocolLib:5.1.0")
+
+    implementation("net.kyori:adventure-text-minimessage:4.14.0")
 }
 
 extra.apply {

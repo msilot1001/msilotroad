@@ -1,5 +1,7 @@
 package io.github.msilot1001.msilotroad.plugin
 
+import com.comphenix.protocol.ProtocolLibrary
+import com.comphenix.protocol.ProtocolManager
 import io.github.monun.tap.fake.*
 import io.github.msilot1001.msilotroad.RoadCore
 import io.github.msilot1001.msilotroad.command.PointCommand
@@ -16,6 +18,9 @@ class MsilotroadPlugin : JavaPlugin(), Listener {
   lateinit var fakeServer: FakeEntityServer
     private set
 
+  lateinit var protocolManager: ProtocolManager
+    private set
+
   override fun onEnable() {
     logger.info("Hellowwwwwwwwwwwwwwwwwwwwwwww world!")
 
@@ -26,6 +31,12 @@ class MsilotroadPlugin : JavaPlugin(), Listener {
     server.scheduler.runTaskTimer(this, fakeServer::update, 0L, 1L)
 
     RoadCore.initCore(this)
+
+    // road core session update every tick
+    server.scheduler.runTaskTimer(this, RoadCore::update, 0L, 1L)
+
+    // protocollib
+    protocolManager = ProtocolLibrary.getProtocolManager()
 
     // commands
     getCommand("point")?.setExecutor(PointCommand())
@@ -78,7 +89,7 @@ class MsilotroadPlugin : JavaPlugin(), Listener {
           if (rayTraceResult.hitBlock != null) {
             rayTraceResult.hitBlock?.let { block ->
               // move fakeblock
-              session.moveFakeBlock(block.location.add(0.5, 0.01, 0.5))
+              session.updateCursor(block)
             }
           }
         }
