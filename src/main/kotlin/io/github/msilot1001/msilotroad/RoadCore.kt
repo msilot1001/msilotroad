@@ -67,7 +67,7 @@ public class RoadSession(public val player: Player, public val world: World) {
     actionBar.sendActionBar(player, messageToDisplay)
   }
 
-  fun moveFakeBlock(loc: Location): Boolean {
+  private fun moveFakeBlock(loc: Location): Boolean {
     cursorFakeBlock.moveTo(loc)
     return true
   }
@@ -91,9 +91,9 @@ public class RoadSession(public val player: Player, public val world: World) {
   // change it to opening road building menu
   fun toolLeftClick(e: PlayerInteractEvent) {
     if (points.size == roadShapeType.ordinal + 2) {
-      val p1 = points.get(1)
-      val p2 = points.get(2)
-      val p3 = points.get(3)
+      val p1 = points[1]
+      val p2 = points[2]
+      val p3 = points[3]
 
       if (p1 != null && p2 != null && p3 != null) {
         val locations =
@@ -187,6 +187,8 @@ public class RoadSession(public val player: Player, public val world: World) {
 
               // put fake block summoned into fake block list
               pointFakeBlocks.put(n, fakeblock)
+
+
             }
           }
         }
@@ -208,6 +210,7 @@ object RoadCore {
   private val sessions = ArrayList<RoadSession>()
   private val playersInSession = ArrayList<Player>()
   private lateinit var fakeServer: FakeEntityServer
+  private val userPalette = HashMap<UUID, Material>()
 
   // constants
   public val tool = Material.BLAZE_ROD
@@ -228,6 +231,7 @@ object RoadCore {
 
     sessions.add(session)
     playersInSession.add(player)
+    userPalette[player.uniqueId] = Material.BLACK_CONCRETE
   }
 
   fun findSession(player: Player, world: World): RoadSession? {
@@ -241,6 +245,7 @@ object RoadCore {
       playersInSession.remove(player)
       result.terminate()
       sessions.remove(result)
+      userPalette.remove(player.uniqueId)
       return true
     }
 

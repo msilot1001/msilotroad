@@ -3,7 +3,7 @@ import org.gradle.configurationcache.extensions.capitalized
 plugins {
     idea
     kotlin("jvm") version Dependency.Kotlin.Version
-    id("io.papermc.paperweight.userdev") version "1.5.3"
+    id("io.papermc.paperweight.userdev") version "1.7.1"
 }
 
 java {
@@ -22,7 +22,7 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib"))
     implementation(kotlin("reflect"))
-    paperweight.paperDevBundle("${Dependency.Paper.Version}-R0.1-SNAPSHOT")
+    paperweight.paperDevBundle("1.20.1-R0.1-SNAPSHOT")
 
     // implementation("io.github.monun:kommand-api:latest.release")
     implementation("io.github.monun:tap-api:latest.release")

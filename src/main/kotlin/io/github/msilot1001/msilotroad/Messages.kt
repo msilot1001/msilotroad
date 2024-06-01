@@ -15,4 +15,16 @@ object Messages {
 
   val ROADSESSION_BUILD_SUCCESS =
     mm.deserialize("<bold><red>Road Building Success!</red></bold>")
+
+  val DRAWLINE_WRONGFORMAT =
+    mm.deserialize("<red>The angle argument should be in Degrees format correctly</red>")
+  val DRAWLINE_WRONGLENGTH =
+    mm.deserialize("<red>The length argument should be in integer format correctly</red>")
+  val DRAWLINE_LENGTHNOTPROVIDED =
+    mm.deserialize("<red>The length argument should be provided!</red>")
+  val DRAWLINE_TOOLONGLENGTH =
+    mm.deserialize("<red>The length argument shouldn't be longer than 1,000.</red>")
+  val DRAWLINE_WRONGELEVATION =
+    mm.deserialize("<red>The elevation argument should be in integer format correctly</red>")
+
 }

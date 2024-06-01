@@ -15,6 +15,14 @@ commands:
     description: Command for road session to place roads
     permission: msilotroad.road
     usage: "Usage: /<command> [build|settings|remove]"
+  drawline:
+    description: Command for drawing lines
+    permission: msilotroad.drawline
+    usage: "Usage: /<command> <angle>"
+  palette:
+    description: Command for configuring block type to place
+    permission: msilotroad.palette
+    usage: "Usage: /<command> <block>"
 permissions:
   msilotroad.*:
     description: Master Permission
@@ -34,6 +42,12 @@ permissions:
     default: op
   msilotroad.road.remove:
     description: Permission to perform road remove operations
+    default: op
+  msilotroad.drawline:
+    description: Permission to draw line
+    default: op
+  msilotroad.palette:
+    description: Permission to configure block to place
     default: op
 depend:
   - ProtocolLib
